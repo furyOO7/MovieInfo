@@ -11,3 +11,16 @@
 	height:240px;
 }
 }
+.loader {
+	width: 70px;
+}
+#loader1{
+	display: none;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top:0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(6,6,6,0.2);
+}

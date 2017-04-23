@@ -8,6 +8,7 @@ $( document ).ready(function() {
 
 
 function getMovies(searchText){
+	document.getElementById("loader1").style.display="flex";
 	axios.get('http://omdbapi.com?s='+searchText)
 	.then(function(response){
 		console.log(response)
@@ -26,9 +27,12 @@ function getMovies(searchText){
 			`;
 		})
 		$('#movies').html(output);
+		document.getElementById("loader1").style.display="none";
 	})
 	.catch(function(err){
+
 		console.log(err)
+		document.getElementById("loader1").style.display="none";
 	})
 	 document.getElementById("searchForm").reset();
 }
@@ -41,9 +45,12 @@ function movieSelected(id){
 
 
 function getMovie(){
-	let movieID = sessionStorage.getItem("movieId");
 
+	let movieID = sessionStorage.getItem("movieId");
+	document.getElementById("loader1").style.display="flex";
 	axios.get('http://omdbapi.com?i='+movieID)
+
+
 	.then(function(response){
 		console.log(response)
 		let movie = response.data;
@@ -76,9 +83,11 @@ function getMovie(){
 			</div>
 		`
 		$("#movie").html(output);
+		document.getElementById("loader1").style.display="none";
 	})
 	.catch(function(err){
 		console.log(err)
+		document.getElementById("loader1").style.display="none";
 	})
 
 
